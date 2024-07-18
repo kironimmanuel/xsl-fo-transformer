@@ -17,36 +17,31 @@ const PDFLibGenerator = () => {
     </Contents>`;
 
     const xslContent = `<?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:fo="http://www.w3.org/1999/XSL/Format">
-    <xsl:template match="/">
-        <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
-            <fo:layout-master-set>
-                <fo:simple-page-master master-name="simple">
-                    <fo:region-body margin="1in"/>
-                </fo:simple-page-master>
-            </fo:layout-master-set>
-            <fo:page-sequence master-reference="simple">
-                <fo:flow flow-name="xsl-region-body">
-                    <fo:block font-family="Helvetica" font-size="14pt">
-                        <fo:block font-size="24pt" font-weight="bold" margin-bottom="20pt" text-align="center">User Information</fo:block>
-                        <fo:block>
-                            <fo:inline font-weight="bold">Username: </fo:inline>
-                            <fo:inline><xsl:value-of select="/Contents/Item/Username" /></fo:inline>
-                        </fo:block>
-                        <fo:block line-height="1.5" />
-                        <fo:block>
-                            <fo:inline font-weight="bold">Email: </fo:inline>
-                            <fo:inline><xsl:value-of select="/Contents/Item/Email" /></fo:inline>
-                        </fo:block>
-                        <fo:block line-height="1.5" />
-                    </fo:block>
-                </fo:flow>
-            </fo:page-sequence>
-        </fo:root>
-    </xsl:template>
-</xsl:stylesheet>
-`;
+        <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+            <xsl:template match="/">
+                <html>
+                    <head>
+                        <title>User Information</title>
+                    </head>
+                    <body style="font-family: Helvetica, sans-serif; margin: 0; padding: 20px; background-color: #f9f9f9;">
+                        <div
+                            style="width: 100%; max-width: 600px; margin: 0 auto; background: #fff; padding: 20px; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                            <div style="font-size: 24pt; font-weight: bold; text-align: center; margin-bottom: 20px; color: red;">User Information</div>
+                            <div style="font-size: 14pt;">
+                                <div style="margin-bottom: 10px; padding: 10px; border-bottom: 1px solid #ddd;">
+                                    <span style="font-weight: bold;">Username: </span>
+                                    <xsl:value-of select="/Contents/Item/Username" />
+                                </div>
+                                <div style="margin-bottom: 10px; padding: 10px; border-bottom: 1px solid #ddd;">
+                                    <span style="font-weight: bold;">Email: </span>
+                                    <xsl:value-of select="/Contents/Item/Email" />
+                                </div>
+                            </div>
+                        </div>
+                    </body>
+                </html>
+            </xsl:template>
+        </xsl:stylesheet>`;
 
     const transformXmlWithXslt = (xml: string, xsl: string): string | null => {
         const parser = new DOMParser();

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <xsl:template match="/">
+        <html>
+            <head>
+                <title>User Information</title>
+                <style>
+                    body {
+                    font-family: Helvetica, sans-serif;
+                    }
+                    .title {
+                    font-size: 24pt;
+                    font-weight: bold;
+                    text-align: center;
+                    margin-bottom: 20pt;
+                    color: red;
+                    }
+                    .info {
+                    font-size: 14pt;
+                    }
+                    .info span {
+                    font-weight: bold;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="title">User Information</div>
+                <div class="info">
+                    <div>
+                        <span>Username: </span>
+                        <xsl:value-of select="/Contents/Item/Username" />
+                    </div>
+                    <div>
+                        <span>Email: </span>
+                        <xsl:value-of select="/Contents/Item/Email" />
+                    </div>
+                </div>
+            </body>
+        </html>
+    </xsl:template>
+</xsl:stylesheet>
