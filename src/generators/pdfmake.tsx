@@ -19,38 +19,11 @@ import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 // };
 // (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 
-const docDefinition = {
-    content: [
-        {
-            text: 'PDFMake',
-            style: 'header',
-        },
-        {
-            text: 'A declarative PDF document generation library for the browser',
-            style: 'subheader',
-        },
-        {
-            ul: ['HTML/CSS-like syntax', 'No external dependencies', 'Works in the browser'],
-        },
-    ],
-    styles: {
-        header: {
-            fontSize: 22,
-            bold: true,
-        },
-        subheader: {
-            fontSize: 18,
-            bold: true,
-        },
-        // defaultStyle: {
-        //     font: 'Arial',
-        // },
-    },
-};
-
 const PDFMake = () => {
     const generatePdf = () => {
-        pdfMake.createPdf(pdfmakeDocDefinition, undefined, undefined, pdfFonts.pdfMake.vfs).open();
+        // pdfMake.createPdf(pdfmakeDocDefinition, undefined, undefined, pdfFonts.pdfMake.vfs).open();
+        // pdfMake.createPdf(pdfmakeDocDefinition, undefined, undefined, pdfFonts.pdfMake.vfs).print();
+        pdfMake.createPdf(pdfmakeDocDefinition, undefined, undefined, pdfFonts.pdfMake.vfs).download();
         // pdfMake.createPdf(docDefinition, undefined, undefined, vfs_fonts).download();
         // pdfMake.createPdf(docDefinition).download();
         //         pdfMake.createPdf(docDefinition).download();
