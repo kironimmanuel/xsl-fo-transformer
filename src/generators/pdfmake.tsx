@@ -1,3 +1,4 @@
+import { pdfmakeDocDefinition } from '@/assets/pdfmake-dd';
 import { Button } from '@/components/ui/button';
 // import * as pdfMake from 'pdfmake/build/pdfmake';
 // import * as pdfFonts from 'pdfmake/build/vfs_fonts';
@@ -49,7 +50,7 @@ const docDefinition = {
 
 const PDFMake = () => {
     const generatePdf = () => {
-        pdfMake.createPdf(docDefinition, undefined, undefined, pdfFonts.pdfMake.vfs).open();
+        pdfMake.createPdf(pdfmakeDocDefinition, undefined, undefined, pdfFonts.pdfMake.vfs).open();
         // pdfMake.createPdf(docDefinition, undefined, undefined, vfs_fonts).download();
         // pdfMake.createPdf(docDefinition).download();
         //         pdfMake.createPdf(docDefinition).download();
