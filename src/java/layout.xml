@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+    <!-- Define output method as XML -->
+    <xsl:output method="xml" indent="yes" />
+
+    <!-- Root template -->
+    <xsl:template match="/">
+        <transformedItems>
+            <!-- Apply templates for each item -->
+            <xsl:apply-templates select="items/item" />
+        </transformedItems>
+    </xsl:template>
+
+    <!-- Template for each item -->
+    <xsl:template match="item">
+        <customItem>
+            <customName>
+                <xsl:value-of select="name" />
+            </customName>
+            <customDescription>
+                <xsl:value-of select="description" />
+            </customDescription>
+        </customItem>
+    </xsl:template>
+
+</xsl:stylesheet>
